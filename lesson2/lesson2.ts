@@ -2,11 +2,16 @@ interface IEmitterObject {
 	events: IEvents;
 	on: (type: string, handler: () => void) => IEmitterObject;
 	off: (type?: string, handler?: () => void) => IEmitterObject;
-	trigger: <T>(event: string | EventType, args: Array<T>) => IEmitterObject;
+	trigger: <T>(event: string | IEventType, args: Array<T>) => IEmitterObject;
 	_offAll: () => IEmitterObject;
 	_offByType: (type: string | undefined) => IEmitterObject;
-	_dispatch: (event: EventType, args: any[]) => IEmitterObject;
+	_dispatch: (event: IEventType, args: any[]) => IEmitterObject;
 	_offByHandler: (type: string | undefined, handler: () => void) => IEmitterObject;
+}
+
+interface IEventType {
+	type: string;
+	timeStamp: Date;
 }
 
 interface IEvents {
