@@ -94,7 +94,9 @@ class EventDi {
 	}
 }
 
-EmitterDi.mixin = function (obj: any, arr: Array<keyof IEmitterObject>) {
+
+
+EmitterDi.mixin = function (obj: any, arr: Array<keyof Omit<IEmitterObject, 'events'>>) {
 	let emitter = Object.create(EmitterDi);
 	arr.map(function (name) {
 		obj[name] = function () {

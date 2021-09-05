@@ -38,7 +38,7 @@ emitter.trigger = function(event, args) {
 };
 
 emitter._dispatch = function(event, args) {
-    if (!this.events.hasOwnProperty(event.type)) return;
+    if (this.events.hasOwnProperty(event.type)) return;
     args = args || [];
     args.unshift(event);
 
